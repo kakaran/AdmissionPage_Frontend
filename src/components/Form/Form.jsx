@@ -18,7 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { AllContext } from "../../Context/Context";
 
 const Form = () => {
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const BASE_URL = import.meta.env_VITE_BASE_URL;
   const { NotificationMethod } = useContext(AllContext);
 
   const schema = z.object({

@@ -10,10 +10,8 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@mui/material";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-const fetchData = () =>
-
-  axios.get(`${BASE_URL}/api/StudentformDisplay`);
+const BASE_URL = import.meta.env_VITE_BASE_URL;
+const fetchData = () => axios.get(`${BASE_URL}/api/StudentformDisplay`);
 
 export default function StudentDetail() {
   const { data, isLoading, isError, error } = useQuery({

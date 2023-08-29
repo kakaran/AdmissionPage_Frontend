@@ -10,10 +10,10 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@mui/material";
 import { useParams } from "react-router-dom";
-import Navbar from "../../Navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
 
 const fetchData = () =>
-  axios.get(`${process.env.REACT_APP_BASE_URL}/api/FormDispaly`);
+  axios.get(`${import.meta.env_VITE_BASE_URL}/api/FormDispaly`);
 
 export default function SingleTable() {
   const { id } = useParams();

@@ -20,9 +20,9 @@ import { useNavigate } from "react-router";
 const defaultTheme = createTheme();
 
 const Signup = () => {
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const BASE_URL = import.meta.env_VITE_BASE_URL;
   const { NotificationMethod } = useContext(AllContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const schema = z.object({
     FirstName: z.string().nonempty("Name is required."),
@@ -31,9 +31,7 @@ const Signup = () => {
       .string()
       .nonempty("Email is required.")
       .email("Invalid email format."),
-    Password: z
-      .string()
-      .nonempty("Password is required."),
+    Password: z.string().nonempty("Password is required."),
     // .regex(
     //   /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[a-zA-Z]).{8,}$/gm,
     //   "Please enter a string password containing at least one lower case letter, one upper case character, one number, one special character and must be at least 8 characters long in length."
@@ -64,7 +62,15 @@ const Signup = () => {
     try {
       const { FirstName, LastName, Email, Password, PhoneNo } = values;
       console.log(values);
-      const Data = (await axios.post(`${BASE_URL}/api/signup`, { FName: FirstName, LName: LastName, Email, Password, PhoneNo })).data;
+      const Data = (
+        await axios.post(`${BASE_URL}/api/signup`, {
+          FName: FirstName,
+          LName: LastName,
+          Email,
+          Password,
+          PhoneNo,
+        })
+      ).data;
       if (Data) {
         navigate("/");
       }

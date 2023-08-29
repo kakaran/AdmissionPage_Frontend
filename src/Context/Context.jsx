@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const AllContext = createContext();
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = import.meta.env_VITE_BASE_URL;
 
 const AllProvider = ({ children }) => {
   const [auth, setAuth] = useState({
@@ -12,8 +12,7 @@ const AllProvider = ({ children }) => {
   const [render, setRender] = useState(false);
   const [role, setRole] = useState();
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [formStatusCheck, setFormStatucCheck] = useState(false)
-
+  const [formStatusCheck, setFormStatucCheck] = useState(false);
 
   axios.defaults.headers.common["authtok"] = auth.token;
 
@@ -67,12 +66,11 @@ const AllProvider = ({ children }) => {
     }
   };
 
-
   const formCheck = async () => {
     try {
-      const { data } = await axios.get(`${BASE_URL}/api/FormCheck`)
+      const { data } = await axios.get(`${BASE_URL}/api/FormCheck`);
       if (data) {
-        setFormStatucCheck(data.status)
+        setFormStatucCheck(data.status);
       }
     } catch (error) {
       NotificationMethod(
@@ -80,20 +78,22 @@ const AllProvider = ({ children }) => {
         error.response.data.status
       );
     }
-  }
+  };
 
   useEffect(() => {
     // setRender(!render);
     console.log(isSignedIn);
     if (isSignedIn) {
       console.log(role);
-      if (role === "Student") { formCheck() }
+      if (role === "Student") {
+        formCheck();
+      }
     }
     if (auth.token) {
       Authentication();
     }
     SignedInStatus();
-  }, [render, auth.token, isSignedIn,role]);
+  }, [render, auth.token, isSignedIn, role]);
 
   return (
     <AllContext.Provider
@@ -104,7 +104,7 @@ const AllProvider = ({ children }) => {
         isSignedIn,
         render,
         setRender,
-        formStatusCheck
+        formStatusCheck,
       }}
     >
       {children}
