@@ -10,7 +10,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@mui/material";
 import { useParams } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../..//Components/Navbar/Navbar";
 
 const fetchData = () =>
   axios.get(`${import.meta.env_VITE_BASE_URL}/api/FormDispaly`);

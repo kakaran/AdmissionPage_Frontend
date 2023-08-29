@@ -1,4 +1,4 @@
-import SingleTable from "../Components/Single/SingleTable";
+import SingleTable from "../Pages/Single/SingleTable";
 import AdminDashboard from "../Pages/AdminDashboard/AdminDashboard";
 import StudentDashbord from "../Pages/Dashbords/StudentDashbord";
 import Login from "../Pages/Login";
