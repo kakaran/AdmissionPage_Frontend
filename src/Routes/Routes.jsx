@@ -1,4 +1,5 @@
 import Form from "../Components/Form/Form";
+import StudentDashbord from "../Pages/Dashbords/StudentDashbord";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup/Signup";
 
@@ -9,11 +10,11 @@ const CommonRoutes = [
 ];
 
 const AdminRoutes = [
-  { path: "/form", element: <Form /> }
+  { path: "/Dashbord", element: <Form /> }
 ];
 
 const StudentRoutes = [
-  { path: "/form", element: <Form /> }
+  { path: "/Dashbord", element: <StudentDashbord /> }
 ];
 
 const routes = (role, isSignedIn) => {
