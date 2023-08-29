@@ -33,11 +33,11 @@ const Signup = () => {
       .email("Invalid email format."),
     Password: z
       .string()
-      .nonempty("Password is required.")
-      .regex(
-        /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[a-zA-Z]).{8,}$/gm,
-        "Please enter a string password containing at least one lower case letter, one upper case character, one number, one special character and must be at least 8 characters long in length."
-      ),
+      .nonempty("Password is required."),
+    // .regex(
+    //   /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[a-zA-Z]).{8,}$/gm,
+    //   "Please enter a string password containing at least one lower case letter, one upper case character, one number, one special character and must be at least 8 characters long in length."
+    // )
     PhoneNo: z
       .number()
       .min(1000000000, "Please enter a 10 digit number")
@@ -63,7 +63,8 @@ const Signup = () => {
   const SignupSubmit = async (values) => {
     try {
       const { FirstName, LastName, Email, Password, PhoneNo } = values;
-      const Data = (await axios.post(`${BASE_URL}/api/signup`, { FirstName, LastName, Email, Password, PhoneNo })).data;
+      console.log(values);
+      const Data = (await axios.post(`${BASE_URL}/api/signup`, { FName: FirstName, LName: LastName, Email, Password, PhoneNo })).data;
       if (Data) {
         navigate("/");
       }
@@ -74,9 +75,6 @@ const Signup = () => {
         error.response.data.status
       );
     }
-
-
-
   };
 
   return (
@@ -183,7 +181,7 @@ const Signup = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

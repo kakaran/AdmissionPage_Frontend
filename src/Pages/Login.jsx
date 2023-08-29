@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import LoginForm from "../Components/login-form";
 import { AllContext } from "../Context/Context";
 
+
 const Login = () => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const { setAuth, NotificationMethod } = useContext(AllContext);
@@ -11,8 +12,8 @@ const Login = () => {
 
   const UserLogin = async (values) => {
     try {
-      const {Email, Password} = values
-      const Data = (await axios.post(`${BASE_URL}/api/login`, {Email, Password})).data;
+      const { Email, Password } = values
+      const Data = (await axios.post(`${BASE_URL}/api/login`, { Email, Password })).data;
       if (Data.token) {
         localStorage.setItem("auth", JSON.stringify(Data));
         // Authentication(Data.token)
@@ -21,10 +22,8 @@ const Login = () => {
         });
         navigate("/home");
       }
-      console.log(Data);
       NotificationMethod(Data.message, Data.status);
     } catch (error) {
-      console.log(error);
       NotificationMethod(
         error.response.data.message,
         error.response.data.status
