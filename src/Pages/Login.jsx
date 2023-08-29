@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../Components/login-form";
 import { AllContext } from "../Context/Context";
+import LoginForm from "../Components/login-form";
 
 const Login = () => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
