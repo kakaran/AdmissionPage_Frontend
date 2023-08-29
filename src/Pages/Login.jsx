@@ -10,9 +10,9 @@ const Login = () => {
   const navigate = useNavigate();
 
   const UserLogin = async (values) => {
-    console.log(values);
     try {
-      const Data = (await axios.post(`${BASE_URL}/api/login`, {})).data;
+      const {Email, Password} = values
+      const Data = (await axios.post(`${BASE_URL}/api/login`, {Email, Password})).data;
       if (Data.token) {
         localStorage.setItem("auth", JSON.stringify(Data));
         // Authentication(Data.token)
@@ -21,6 +21,7 @@ const Login = () => {
         });
         navigate("/home");
       }
+      console.log(Data);
       NotificationMethod(Data.message, Data.status);
     } catch (error) {
       console.log(error);

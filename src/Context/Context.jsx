@@ -39,6 +39,7 @@ const AllProvider = ({ children }) => {
   };
 
   const NotificationMethod = async (message, status) => {
+    console.log(message,status);
     if (status) {
       toast.success(`${message}`, {
         position: "top-right",
@@ -69,9 +70,9 @@ const AllProvider = ({ children }) => {
     if (isSignedIn) {
     }
     if (auth.token) {
-      //   Authentication();
+        Authentication();
     }
-    // SignedInStatus();
+    SignedInStatus();
   }, [render, auth.token, isSignedIn]);
 
   return (
