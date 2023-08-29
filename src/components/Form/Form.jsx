@@ -129,10 +129,12 @@ const Form = () => {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="p">
+          <Typography variant="h3" align="center">
             Sri Guru Tegh Bahadur Institute of Management and Information
-            Technology - Registration Form for Management Quota Admission
-            2023-25
+            Technology
+          </Typography>
+          <Typography variant="h5" color={"GrayText"} margin={2} align="left">
+            Registration Form for Management Quota Admission 2023-25
           </Typography>
           <Box component={"form"} onSubmit={handleSubmit(onSubmit)} noValidate>
             <TextField
