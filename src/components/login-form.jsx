@@ -40,7 +40,6 @@ const LoginForm = ({ onSubmit }) => {
       <CssBaseline />
       <Box
         sx={{
-          marginTop: 8,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -87,7 +86,7 @@ const LoginForm = ({ onSubmit }) => {
           <Grid container>
             <Grid item xs>
               <Link
-                href="#"
+                to="#"
                 variant="body2"
                 style={{ textDecoration: "underline", color: "blue" }}
               >
@@ -96,11 +95,11 @@ const LoginForm = ({ onSubmit }) => {
             </Grid>
             <Grid item>
               <Link
-                href="#"
+                to="/signup"
                 variant="body2"
                 style={{ textDecoration: "underline", color: "blue" }}
               >
-                {"Don't have an account? Sign Up"}
+                Don't have an account? Sign Up
               </Link>
             </Grid>
           </Grid>
