@@ -7,6 +7,36 @@ body {
   padding: 0;
 }
 
+.ImageUplaodContainer {
+  width: 100%;
+  height: 100px;
+  margin: auto;
+  display: inline-flex;
+  border: 2px dashed;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ImageUplaodContainer:hover {
+  border-color: #b278f5;
+}
+
+.ImageUplaodContainer > div {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ImageUplaodContainer input {
+  display: none;
+}
 /* .App {
   text-align: center;
 }
