@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import {
   Box,
@@ -15,8 +15,13 @@ import {
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AllContext } from "../../Context/Context";
 
 const Form = () => {
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const { NotificationMethod } = useContext(AllContext);
+
+
   const schema = z.object({
     Email: z.string().nonempty("Email is required").email("Invalid Email"),
     CETRank: z.string().nonempty("CET Rank is required"),
@@ -77,6 +82,8 @@ const Form = () => {
   const [cetRollImage, setCetRollImage] = useState(null);
   const [tenthCopy, setTenthCopy] = useState(null);
   const [twelthCopy, setTwelthCopy] = useState(null);
+  const [proofOfAddressCopy, setProofOfAddressCopy] = useState(null)
+  const [proofOfReservedCopy, setProofOfReservedCopy] = useState(null)
 
   const {
     register,
@@ -115,7 +122,82 @@ const Form = () => {
   });
 
   const onSubmit = async (values) => {
-    console.log(values);
+    try {
+
+
+      const { Email,
+        CETRank,
+        CETRollNo,
+        IPUApplicationNo,
+        NameStudent,
+        StudentContacatNo,
+        StudentAdharCardNo,
+        StudentEmailId,
+        StudentDOB,
+        FatherName,
+        FatherOccupation,
+        FatherEmailId,
+        MotherName,
+        MotherContactNo,
+        MotherOccupation,
+        MotherEmail,
+        AdmissionCategory,
+        AreaOfResidence,
+        Gender,
+        PermanentAddress,
+        CorrespondenceAddress,
+        Religion,
+        Nationality,
+        TenthPercentage,
+        TwelthPercentage } = values
+      let formData = new FormData();
+      formData.append("Email", Email);
+      formData.append("CETRank", CETRank);
+      formData.append("CETRollNo", CETRollNo);
+      formData.append("IPUApplicationNo", IPUApplicationNo);
+      formData.append("NameStudent", NameStudent);
+      formData.append("StudentContacatNo", StudentContacatNo);
+      formData.append("StudentAdharCardNo", StudentAdharCardNo);
+      formData.append("StudentEmailId", StudentEmailId);
+      formData.append("StudentDOB", StudentDOB);
+      formData.append("FatherName", FatherName);
+      formData.append("FatherOccupation", FatherOccupation);
+      formData.append("FatherEmailId", FatherEmailId);
+      formData.append("MotherName", MotherName);
+      formData.append("MotherContactNo", MotherContactNo);
+      formData.append("MotherOccupation", MotherOccupation);
+      formData.append("MotherEmail", MotherEmail);
+      formData.append("AdmissionCategory", AdmissionCategory);
+      formData.append("AreaOfResidence", AreaOfResidence);
+      formData.append("Gender", Gender);
+      formData.append("PermanentAddress", PermanentAddress);
+      formData.append("CorrespondenceAddress", CorrespondenceAddress);
+      formData.append("Religion", Religion);
+      formData.append("Nationality", Nationality);
+      formData.append("TenthPercentage", TenthPercentage);
+      formData.append("TwelthPercentage", TwelthPercentage);
+      formData.append("AdmitCardCopy", admitCardImage, admitCardImage.name);
+      formData.append("ProofOfDateOfBirthCopy", proofOfDOB, proofOfDOB.name);
+      formData.append("CETRollNoCopy", cetRollImage, cetRollImage.name);
+      formData.append("TenthCopy", tenthCopy, tenthCopy.name);
+      formData.append("TwelthCopy", twelthCopy, twelthCopy.name);
+      formData.append("StudentImage", studentImage, studentImage.name);
+      formData.append("ProofOfReservedCopy", proofOfReservedCopy, proofOfReservedCopy.name);
+      formData.append("ProofOfAddressCopy", proofOfAddressCopy, proofOfAddressCopy.name);
+
+      const { data } = await axios.post(`${BASE_URL}/api/formCreated`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      })
+      console.log(data);
+      NotificationMethod(data.message, data.status);
+    } catch (error) {
+      NotificationMethod(
+        error.response.data.message,
+        error.response.data.status
+      );
+    }
   };
 
   return (
@@ -584,6 +666,58 @@ const Form = () => {
               <img
                 className="w-1/2 rounded-md shadow-lg mb-5"
                 src={URL.createObjectURL(twelthCopy)}
+                alt="twelthcopy"
+              />
+            )}
+
+            <label htmlFor="proofOfReservedCopy" className="">
+              <Typography variant="p">Proof of Reserved Copy: </Typography>
+            </label>
+
+            <label className="ImageUplaodContainer" htmlFor="proofOfReservedCopy">
+              <div>
+                <span>+</span> Upload
+              </div>
+              <input
+                type="file"
+                name=""
+                id="proofOfReservedCopy"
+                onChange={(e) => {
+                  setProofOfReservedCopy(e.target.files[0]);
+                }}
+                accept=" image/jpeg"
+              />
+            </label>
+            {proofOfReservedCopy && (
+              <img
+                className="w-1/2 rounded-md shadow-lg mb-5"
+                src={URL.createObjectURL(proofOfReservedCopy)}
+                alt="twelthcopy"
+              />
+            )}
+
+            <label htmlFor="setProofOfAddressCopy" className="">
+              <Typography variant="p">Proof of Address Copy: </Typography>
+            </label>
+
+            <label className="ImageUplaodContainer" htmlFor="setProofOfAddressCopy">
+              <div>
+                <span>+</span> Upload
+              </div>
+              <input
+                type="file"
+                name=""
+                id="setProofOfAddressCopy"
+                onChange={(e) => {
+                  setProofOfAddressCopy(e.target.files[0]);
+                }}
+                accept=" image/jpeg"
+              />
+            </label>
+            {proofOfAddressCopy && (
+              <img
+                className="w-1/2 rounded-md shadow-lg mb-5"
+                src={URL.createObjectURL(proofOfAddressCopy)}
                 alt="twelthcopy"
               />
             )}
