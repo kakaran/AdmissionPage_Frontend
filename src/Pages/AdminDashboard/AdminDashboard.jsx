@@ -1,6 +1,6 @@
 import React from "react";
-import AdminTable from "../../Components/AdminTable/AdminTable";
 import Navbar from "../../Components/Navbar/Navbar";
+import AdminTable from "../../Components/AdminTable/AdminTable";
 
 const AdminDashboard = () => {
   return (
