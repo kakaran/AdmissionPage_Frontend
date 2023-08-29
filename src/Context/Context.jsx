@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const AllContext = createContext();
-const BASE_URL = import.meta.env_VITE_BASE_URL;
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const AllProvider = ({ children }) => {
   const [auth, setAuth] = useState({

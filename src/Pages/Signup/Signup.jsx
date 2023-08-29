@@ -20,7 +20,7 @@ import { useNavigate } from "react-router";
 const defaultTheme = createTheme();
 
 const Signup = () => {
-  const BASE_URL = import.meta.env_VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const { NotificationMethod } = useContext(AllContext);
   const navigate = useNavigate();
 

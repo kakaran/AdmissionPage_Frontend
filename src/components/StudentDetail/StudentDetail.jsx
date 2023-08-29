@@ -10,7 +10,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@mui/material";
 
-const BASE_URL = import.meta.env_VITE_BASE_URL;
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const fetchData = () => axios.get(`${BASE_URL}/api/StudentformDisplay`);
 
 export default function StudentDetail() {

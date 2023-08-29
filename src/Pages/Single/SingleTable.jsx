@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "../..//Components/Navbar/Navbar";
 
 const fetchData = () =>
-  axios.get(`${import.meta.env_VITE_BASE_URL}/api/FormDispaly`);
+  axios.get(`${import.meta.env.VITE_BASE_URL}/api/FormDispaly`);
 
 export default function SingleTable() {
   const { id } = useParams();

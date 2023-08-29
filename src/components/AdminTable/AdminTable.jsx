@@ -12,7 +12,7 @@ import { Skeleton } from "@mui/material";
 import { useNavigate } from "react-router";
 
 const fetchData = () =>
-  axios.get(`${import.meta.env_VITE_BASE_URL}/api/FormDispaly`);
+  axios.get(`${import.meta.env.VITE_BASE_URL}/api/FormDispaly`);
 
 export default function AdminTable() {
   const navigate = useNavigate();

@@ -5,7 +5,7 @@ import LoginForm from "../Components/login-form";
 import { AllContext } from "../Context/Context";
 
 const Login = () => {
-  const BASE_URL = import.meta.env_VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const { setAuth, NotificationMethod } = useContext(AllContext);
   const navigate = useNavigate();
 
@@ -31,6 +31,8 @@ const Login = () => {
       );
     }
   };
+
+  console.log({ env: import.meta.env.VITE_BASE_URL });
 
   return (
     <main className="min-h-screen flex items-center justify-center">
