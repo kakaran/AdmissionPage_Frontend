@@ -14,7 +14,7 @@ const AdminRoutes = [{ path: "/Dashbord", element: <AdminDashboard /> }];
 const StudentRoutes = [{ path: "/Dashbord", element: <StudentDashbord /> }];
 
 const routes = (role, isSignedIn) => {
-  const SignedInList = role === "Admin" ? AdminRoutes : StudentRoutes;
+  const SignedInList = role === "Student" ? AdminRoutes : StudentRoutes;
   return isSignedIn ? [...SignedInList, ...CommonRoutes] : [...CommonRoutes];
 };
 

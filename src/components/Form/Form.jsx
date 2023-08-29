@@ -21,7 +21,6 @@ const Form = () => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const { NotificationMethod } = useContext(AllContext);
 
-
   const schema = z.object({
     Email: z.string().nonempty("Email is required").email("Invalid Email"),
     CETRank: z.string().nonempty("CET Rank is required"),
@@ -78,8 +77,8 @@ const Form = () => {
   const [cetRollImage, setCetRollImage] = useState(null);
   const [tenthCopy, setTenthCopy] = useState(null);
   const [twelthCopy, setTwelthCopy] = useState(null);
-  const [proofOfAddressCopy, setProofOfAddressCopy] = useState(null)
-  const [proofOfReservedCopy, setProofOfReservedCopy] = useState(null)
+  const [proofOfAddressCopy, setProofOfAddressCopy] = useState(null);
+  const [proofOfReservedCopy, setProofOfReservedCopy] = useState(null);
 
   const {
     register,
@@ -118,9 +117,8 @@ const Form = () => {
 
   const onSubmit = async (values) => {
     try {
-
-
-      const { Email,
+      const {
+        Email,
         CETRank,
         CETRollNo,
         IPUApplicationNo,
@@ -143,7 +141,8 @@ const Form = () => {
         Religion,
         Nationality,
         TenthPercentage,
-        TwelthPercentage } = values
+        TwelthPercentage,
+      } = values;
       let formData = new FormData();
       formData.append("Email", Email);
       formData.append("CETRank", CETRank);
@@ -152,7 +151,7 @@ const Form = () => {
       formData.append("NameStudent", NameStudent);
       formData.append("StudentContacatNo", StudentContacatNo);
       formData.append("StudentAdharCardNo", StudentAdharCardNo);
-      formData.append("StudentDOB", StudentDOB);
+      formData.append("DOB", StudentDOB);
       formData.append("FatherName", FatherName);
       formData.append("FatherOccupation", FatherOccupation);
       formData.append("FatherEmailId", FatherEmailId);
@@ -175,14 +174,26 @@ const Form = () => {
       formData.append("TenthCopy", tenthCopy, tenthCopy.name);
       formData.append("TwelthCopy", twelthCopy, twelthCopy.name);
       formData.append("StudentImage", studentImage, studentImage.name);
-      formData.append("ProofOfReservedCopy", proofOfReservedCopy, proofOfReservedCopy.name);
-      formData.append("ProofOfAddressCopy", proofOfAddressCopy, proofOfAddressCopy.name);
+      formData.append(
+        "ProofOfReservedCopy",
+        proofOfReservedCopy,
+        proofOfReservedCopy.name
+      );
+      formData.append(
+        "ProofOfAddressCopy",
+        proofOfAddressCopy,
+        proofOfAddressCopy.name
+      );
 
-      const { data } = await axios.post(`${BASE_URL}/api/formCreated`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
+      const { data } = await axios.post(
+        `${BASE_URL}/api/formCreated`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      })
+      );
       console.log(data);
       NotificationMethod(data.message, data.status);
     } catch (error) {
@@ -314,7 +325,7 @@ const Form = () => {
               type="number"
               margin="normal"
             />
-           
+
             <label component="legend" htmlFor="StudentDOB">
               Student's Date of Birth
             </label>
@@ -659,7 +670,10 @@ const Form = () => {
               <Typography variant="p">Proof of Reserved Copy: </Typography>
             </label>
 
-            <label className="ImageUplaodContainer" htmlFor="proofOfReservedCopy">
+            <label
+              className="ImageUplaodContainer"
+              htmlFor="proofOfReservedCopy"
+            >
               <div>
                 <span>+</span> Upload
               </div>
@@ -685,7 +699,10 @@ const Form = () => {
               <Typography variant="p">Proof of Address Copy: </Typography>
             </label>
 
-            <label className="ImageUplaodContainer" htmlFor="setProofOfAddressCopy">
+            <label
+              className="ImageUplaodContainer"
+              htmlFor="setProofOfAddressCopy"
+            >
               <div>
                 <span>+</span> Upload
               </div>
