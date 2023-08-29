@@ -15,7 +15,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { AllContext } from "../../Context/Context";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme();
 

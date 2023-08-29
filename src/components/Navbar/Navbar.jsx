@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import image from "../../Assets/image.svg";
 const Navbar = () => {
   const navigate = useNavigate();
