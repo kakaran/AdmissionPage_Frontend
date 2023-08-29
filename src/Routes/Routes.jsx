@@ -1,3 +1,4 @@
+import SingleTable from "../Components/AdminTable/Single/SingleTable";
 import AdminDashboard from "../Pages/AdminDashboard/AdminDashboard";
 import StudentDashbord from "../Pages/Dashbords/StudentDashbord";
 import Login from "../Pages/Login";
@@ -9,12 +10,15 @@ const CommonRoutes = [
   { path: "*", element: <Login /> },
 ];
 
-const AdminRoutes = [{ path: "/Dashbord", element: <AdminDashboard /> }];
+const AdminRoutes = [
+  { path: "/Dashbord", element: <AdminDashboard /> },
+  { path: "student/:id", element: <SingleTable /> },
+];
 
 const StudentRoutes = [{ path: "/Dashbord", element: <StudentDashbord /> }];
 
 const routes = (role, isSignedIn) => {
-  const SignedInList = role === "Student" ? AdminRoutes : StudentRoutes;
+  const SignedInList = role === "Admin" ? AdminRoutes : StudentRoutes;
   return isSignedIn ? [...SignedInList, ...CommonRoutes] : [...CommonRoutes];
 };
 

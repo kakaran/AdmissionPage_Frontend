@@ -38,20 +38,18 @@ const Form = () => {
     StudentDOB: z.string().nonempty("Date of Birth is required"),
     FatherName: z.string().nonempty("Father's Name is required"),
     FatherOccupation: z.string().nonempty("Father's Occupation is required"),
-    FatherEmailId: z
-      .string()
-      // .nonempty("Email is required")
-      .email("Invalid Email"),
+    FatherEmailId: z.string(),
+    // .nonempty("Email is required")
+    // .email("Invalid Email")
     MotherName: z.string().nonempty("Mother's Name is required"),
     MotherContactNo: z
       .number()
       .min(1000000000, "Invalid Contact No.")
       .max(9999999999, "Invalid Contact No."),
     MotherOccupation: z.string().nonempty("Mother's Occupation is required"),
-    MotherEmail: z
-      .string()
-      // .nonempty("Email is required")
-      .email("Invalid Email"),
+    MotherEmail: z.string(),
+    // .nonempty("Email is required")
+    // .email("Invalid Email")
     AdmissionCategory: z.string().nonempty("Admission Category is required"),
     AreaOfResidence: z.string().nonempty("Area of Residence is required"),
     Gender: z.string().nonempty("Gender is required"),
@@ -198,8 +196,8 @@ const Form = () => {
       NotificationMethod(data.message, data.status);
     } catch (error) {
       NotificationMethod(
-        error.response.data.message,
-        error.response.data.status
+        error.response?.data.message,
+        error.response?.data.status
       );
     }
   };
