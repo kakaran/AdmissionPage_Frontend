@@ -36,16 +36,12 @@ const Form = () => {
       .number()
       .min(100000000000, "Invalid Adhar Card No.")
       .max(999999999999, "Invalid Adhar Card No."),
-    StudentEmailId: z
-      .string()
-      .nonempty("Email is required")
-      .email("Invalid Email"),
     StudentDOB: z.string().nonempty("Date of Birth is required"),
     FatherName: z.string().nonempty("Father's Name is required"),
     FatherOccupation: z.string().nonempty("Father's Occupation is required"),
     FatherEmailId: z
       .string()
-      .nonempty("Email is required")
+      // .nonempty("Email is required")
       .email("Invalid Email"),
     MotherName: z.string().nonempty("Mother's Name is required"),
     MotherContactNo: z
@@ -55,7 +51,7 @@ const Form = () => {
     MotherOccupation: z.string().nonempty("Mother's Occupation is required"),
     MotherEmail: z
       .string()
-      .nonempty("Email is required")
+      // .nonempty("Email is required")
       .email("Invalid Email"),
     AdmissionCategory: z.string().nonempty("Admission Category is required"),
     AreaOfResidence: z.string().nonempty("Area of Residence is required"),
@@ -98,7 +94,6 @@ const Form = () => {
       NameStudent: "",
       StudentContacatNo: "",
       StudentAdharCardNo: "",
-      StudentEmailId: "",
       StudentDOB: "",
       FatherName: "",
       FatherOccupation: "",
@@ -132,7 +127,6 @@ const Form = () => {
         NameStudent,
         StudentContacatNo,
         StudentAdharCardNo,
-        StudentEmailId,
         StudentDOB,
         FatherName,
         FatherOccupation,
@@ -158,7 +152,6 @@ const Form = () => {
       formData.append("NameStudent", NameStudent);
       formData.append("StudentContacatNo", StudentContacatNo);
       formData.append("StudentAdharCardNo", StudentAdharCardNo);
-      formData.append("StudentEmailId", StudentEmailId);
       formData.append("StudentDOB", StudentDOB);
       formData.append("FatherName", FatherName);
       formData.append("FatherOccupation", FatherOccupation);
@@ -319,17 +312,7 @@ const Form = () => {
               type="number"
               margin="normal"
             />
-            <TextField
-              id="StudentEmailId"
-              label="Student's Email"
-              variant="outlined"
-              {...register("StudentEmailId")}
-              error={!!errors.StudentEmailId}
-              helperText={errors.StudentEmailId?.message}
-              fullWidth
-              type="email"
-              margin="normal"
-            />
+           
             <label component="legend" htmlFor="StudentDOB">
               Student's Date of Birth
             </label>
