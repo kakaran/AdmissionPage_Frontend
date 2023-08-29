@@ -466,14 +466,7 @@ const Form = () => {
               type="number"
               margin="normal"
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Submit
-            </Button>
+
             <label htmlFor="studentimage" className="">
               <Typography variant="h5">Student Image: </Typography>
             </label>
@@ -595,6 +588,14 @@ const Form = () => {
                 alt="twelthcopy"
               />
             )}
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Submit
+            </Button>
           </Box>
         </Box>
       </Container>
