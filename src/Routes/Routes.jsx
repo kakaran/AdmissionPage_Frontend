@@ -1,8 +1,8 @@
-import SingleTable from "../Components/AdminTable/Single/SingleTable";
-import AdminDashboard from "../Pages/AdminDashboard/AdminDashboard";
-import StudentDashbord from "../Pages/Dashbords/StudentDashbord";
-import Login from "../Pages/Login";
-import Signup from "../Pages/Signup/Signup";
+import SingleTable from "../Components/AdminTable/Single/SingleTable.jsx";
+import AdminDashboard from "../Pages/AdminDashboard/AdminDashboard.jsx";
+import StudentDashbord from "../Pages/Dashbords/StudentDashbord.jsx";
+import Login from "../Pages/Login.jsx";
+import Signup from "../Pages/Signup/Signup.jsx";
 
 const CommonRoutes = [
   { path: "/", element: <Login /> },
