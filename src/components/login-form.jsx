@@ -86,12 +86,20 @@ const LoginForm = ({ onSubmit }) => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link
+                href="#"
+                variant="body2"
+                style={{ textDecoration: "underline", color: "blue" }}
+              >
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link
+                href="#"
+                variant="body2"
+                style={{ textDecoration: "underline", color: "blue" }}
+              >
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

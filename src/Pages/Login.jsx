@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../components/login-form";
+import LoginForm from "../Components/login-form";
 import { AllContext } from "../Context/Context";
 
 const Login = () => {
