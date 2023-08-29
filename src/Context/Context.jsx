@@ -12,6 +12,7 @@ const AllProvider = ({ children }) => {
   const [render, setRender] = useState(false);
   const [role, setRole] = useState();
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [formStatusCheck, setFormStatucCheck] = useState(true)
 
   axios.defaults.headers.common["authtok"] = auth.token;
 
@@ -65,9 +66,25 @@ const AllProvider = ({ children }) => {
     }
   };
 
+
+  const formCheck = async () => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/api/FormCheck`)
+      if (data) {
+        setFormStatucCheck(data.status)
+      }
+    } catch (error) {
+      NotificationMethod(
+        error.response.data.message,
+        error.response.data.status
+      );
+    }
+  }
+
   useEffect(() => {
     // setRender(!render);
     if (isSignedIn) {
+      if (role === "Student") formCheck()
     }
     if (auth.token) {
       Authentication();
@@ -84,6 +101,7 @@ const AllProvider = ({ children }) => {
         isSignedIn,
         render,
         setRender,
+        formStatusCheck
       }}
     >
       {children}
