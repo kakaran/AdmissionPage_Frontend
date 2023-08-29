@@ -14,6 +14,8 @@ const AllProvider = ({ children }) => {
     const [role, setRole] = useState();
     const [isSignedIn, setIsSignedIn] = useState(false);
 
+    axios.defaults.headers.common["authtok"] = auth.token;
+
     const Authentication = async () => {
         try {
           const Response = (await axios.get(`${BASE_URL}/api/authentication`)).data;
@@ -81,7 +83,6 @@ const AllProvider = ({ children }) => {
         <AllContext.Provider
             value={{
                 NotificationMethod,
-                role,
                 setAuth,
                 isSignedIn,
                 render,
