@@ -31,10 +31,10 @@ const Signup = () => {
         / ^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,}$/,
         "Please enter a string password containing at least one lower case letter, one upper case character, one number, one special character and must be at least 10 characters long in length."
       ),
-    Phone: z
+    PhoneNo: z
       .number()
-      .min(10, "Please enter a 10 digit phone number")
-      .max(10, "Please enter a 10 digit phone number"),
+      .min(1000000000, "Please enter a 10 digit number")
+      .max(9999999999, "Please enter a 10 digit number"),
   });
 
   const {
@@ -47,8 +47,10 @@ const Signup = () => {
       LastName: "",
       Email: "",
       Password: "",
+      PhoneNo: "",
     },
     resolver: zodResolver(schema),
+    mode: "onTouched",
   });
 
   const SignupSubmit = (values) => {
@@ -89,6 +91,8 @@ const Signup = () => {
                   label="First Name"
                   autoFocus
                   {...register("FirstName")}
+                  error={!!errors.FirstName}
+                  helperText={errors?.FirstName?.message}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -99,6 +103,8 @@ const Signup = () => {
                   label="Last Name"
                   autoComplete="family-name"
                   {...register("LastName")}
+                  error={!!errors.LastName}
+                  helperText={errors?.LastName?.message}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -108,9 +114,15 @@ const Signup = () => {
                   id="phone"
                   label="Phone number"
                   autoComplete="phone-number"
-                  {...register("Phone", {
+                  {...register("PhoneNo", {
                     valueAsNumber: true,
                   })}
+                  error={!!errors.PhoneNo}
+                  helperText={
+                    errors?.PhoneNo?.type === "invalid_type"
+                      ? "Please enter a number"
+                      : errors?.PhoneNo?.message
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -121,6 +133,8 @@ const Signup = () => {
                   label="Email Address"
                   autoComplete="email"
                   {...register("Email")}
+                  error={!!errors.Email}
+                  helperText={errors?.Email?.message}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -132,6 +146,8 @@ const Signup = () => {
                   id="password"
                   autoComplete="new-password"
                   {...register("Password")}
+                  error={!!errors.Password}
+                  helperText={errors?.Password?.message}
                 />
               </Grid>
             </Grid>
