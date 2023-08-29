@@ -20,7 +20,7 @@ const Login = () => {
         setAuth({
           token: Data.token,
         });
-        navigate("/home");
+        navigate("/Dashbord");
       }
       NotificationMethod(Data.message, Data.status);
     } catch (error) {
