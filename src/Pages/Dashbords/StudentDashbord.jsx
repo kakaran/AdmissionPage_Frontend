@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../../Components/Navbar'
 import Form from '../../Components/Form/Form'
+import Navbar from '../../Components/Navbar/Navbar'
 
 const StudentDashbord = () => {
     return (
