@@ -13,7 +13,7 @@ const AllProvider = ({ children }) => {
   const [role, setRole] = useState();
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [formStatusCheck, setFormStatucCheck] = useState(false)
-  
+
 
   axios.defaults.headers.common["authtok"] = auth.token;
 
@@ -84,14 +84,16 @@ const AllProvider = ({ children }) => {
 
   useEffect(() => {
     // setRender(!render);
+    console.log(isSignedIn);
     if (isSignedIn) {
-      if (role === "Student") formCheck()
+      console.log(role);
+      if (role === "Student") { formCheck() }
     }
     if (auth.token) {
       Authentication();
     }
     SignedInStatus();
-  }, [render, auth.token, isSignedIn]);
+  }, [render, auth.token, isSignedIn,role]);
 
   return (
     <AllContext.Provider
