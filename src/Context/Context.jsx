@@ -12,7 +12,8 @@ const AllProvider = ({ children }) => {
   const [render, setRender] = useState(false);
   const [role, setRole] = useState();
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [formStatusCheck, setFormStatucCheck] = useState(true)
+  const [formStatusCheck, setFormStatucCheck] = useState(false)
+  
 
   axios.defaults.headers.common["authtok"] = auth.token;
 
