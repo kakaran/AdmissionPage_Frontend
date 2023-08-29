@@ -6,12 +6,14 @@ import {
   Container,
   CssBaseline,
   Avatar,
+  Grid,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import React from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Link } from "react-router-dom";
 
 const LoginForm = ({ onSubmit }) => {
   const schema = z.object({
@@ -51,13 +53,7 @@ const LoginForm = ({ onSubmit }) => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box
-          component={"form"}
-          onSubmit={handleSubmit(onSubmit)}
-          noValidate
-          className="rounded-md shadow-md"
-        >
-          <Typography variant="p">to continue to Admission.</Typography>
+        <Box component={"form"} onSubmit={handleSubmit(onSubmit)} noValidate>
           <TextField
             id="email"
             label="Email"
@@ -65,6 +61,9 @@ const LoginForm = ({ onSubmit }) => {
             {...register("Email")}
             error={!!errors.Email}
             helperText={errors.Email?.message}
+            fullWidth
+            autoComplete="email"
+            margin="normal"
           />
           <TextField
             id="password"
@@ -73,15 +72,30 @@ const LoginForm = ({ onSubmit }) => {
             {...register("Password")}
             error={!!errors.Password}
             helperText={errors.Password?.message}
+            fullWidth
+            type="password"
+            margin="normal"
           />
-          <div>
-            <Button type="submit" variant="contained">
-              LOGIN
-            </Button>
-            <Button type="button" variant="text">
-              Forgot password?
-            </Button>
-          </div>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            LOGIN
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link href="#" variant="body2">
+                Forgot password?
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="#" variant="body2">
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </Box>
     </Container>
