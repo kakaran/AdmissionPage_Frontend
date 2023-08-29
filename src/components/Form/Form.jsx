@@ -129,7 +129,7 @@ const Form = () => {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="p">
             Sri Guru Tegh Bahadur Institute of Management and Information
             Technology - Registration Form for Management Quota Admission
             2023-25
@@ -180,7 +180,7 @@ const Form = () => {
               margin="normal"
             />
             <label htmlFor="admitcardimage" className="">
-              <Typography variant="h5">Admit Card Image: </Typography>
+              <Typography variant="p">Admit Card Image: </Typography>
             </label>
             <label className="ImageUplaodContainer" htmlFor="admitcardimage">
               <div>
@@ -466,9 +466,8 @@ const Form = () => {
               type="number"
               margin="normal"
             />
-
             <label htmlFor="studentimage" className="">
-              <Typography variant="h5">Student Image: </Typography>
+              <Typography variant="p">Student Image: </Typography>
             </label>
             <label className="ImageUplaodContainer" htmlFor="studentimage">
               <div>
@@ -492,7 +491,7 @@ const Form = () => {
               />
             )}
             <label htmlFor="proofofdob" className="">
-              <Typography variant="h5">Proof of DOB: </Typography>
+              <Typography variant="p">Proof of DOB: </Typography>
             </label>
             <label className="ImageUplaodContainer" htmlFor="proofofdob">
               <div>
@@ -516,7 +515,7 @@ const Form = () => {
               />
             )}
             <label htmlFor="cetrollimage" className="">
-              <Typography variant="h5">CET Roll Image: </Typography>
+              <Typography variant="p">CET Roll Image: </Typography>
             </label>
             <label className="ImageUplaodContainer" htmlFor="cetrollimage">
               <div>
@@ -540,7 +539,7 @@ const Form = () => {
               />
             )}
             <label htmlFor="tenthcopy" className="">
-              <Typography variant="h5">10th Copy: </Typography>
+              <Typography variant="p">10th Copy: </Typography>
             </label>
             <label className="ImageUplaodContainer" htmlFor="tenthcopy">
               <div>
@@ -564,7 +563,7 @@ const Form = () => {
               />
             )}
             <label htmlFor="twelthcopy" className="">
-              <Typography variant="h5">12th Copy: </Typography>
+              <Typography variant="p">12th Copy: </Typography>
             </label>
 
             <label className="ImageUplaodContainer" htmlFor="twelthcopy">
