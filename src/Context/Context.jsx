@@ -26,7 +26,7 @@ const AllProvider = ({ children }) => {
     }
   };
 
-  const SignedInStatus = async () => {
+  async function SignedInStatus() {
     try {
       const token = JSON.parse(localStorage.getItem("auth")).token;
 
@@ -36,10 +36,10 @@ const AllProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 
   const NotificationMethod = async (message, status) => {
-    console.log(message,status);
+    console.log(message, status);
     if (status) {
       toast.success(`${message}`, {
         position: "top-right",
@@ -70,7 +70,7 @@ const AllProvider = ({ children }) => {
     if (isSignedIn) {
     }
     if (auth.token) {
-        Authentication();
+      Authentication();
     }
     SignedInStatus();
   }, [render, auth.token, isSignedIn]);

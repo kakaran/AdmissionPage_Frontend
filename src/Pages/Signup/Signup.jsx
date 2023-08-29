@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,10 +13,17 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
+import { AllContext } from "../../Context/Context";
+import { useNavigate } from "react-router";
 
 const defaultTheme = createTheme();
 
 const Signup = () => {
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const { NotificationMethod } = useContext(AllContext);
+  const navigate = useNavigate()
+
   const schema = z.object({
     FirstName: z.string().nonempty("Name is required."),
     LastName: z.string().nonempty("Last Name is required."),
@@ -28,8 +35,8 @@ const Signup = () => {
       .string()
       .nonempty("Password is required.")
       .regex(
-        / ^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,}$/,
-        "Please enter a string password containing at least one lower case letter, one upper case character, one number, one special character and must be at least 10 characters long in length."
+        /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[a-zA-Z]).{8,}$/gm,
+        "Please enter a string password containing at least one lower case letter, one upper case character, one number, one special character and must be at least 8 characters long in length."
       ),
     PhoneNo: z
       .number()
@@ -50,11 +57,26 @@ const Signup = () => {
       PhoneNo: "",
     },
     resolver: zodResolver(schema),
-    mode: "onTouched",
+    mode: "onChange",
   });
 
-  const SignupSubmit = (values) => {
-    console.log(values);
+  const SignupSubmit = async (values) => {
+    try {
+      const { FirstName, LastName, Email, Password, PhoneNo } = values;
+      const Data = (await axios.post(`${BASE_URL}/api/signup`, { FirstName, LastName, Email, Password, PhoneNo })).data;
+      if (Data) {
+        navigate("/");
+      }
+      NotificationMethod(Data.message, Data.status);
+    } catch (error) {
+      NotificationMethod(
+        error.response.data.message,
+        error.response.data.status
+      );
+    }
+
+
+
   };
 
   return (
